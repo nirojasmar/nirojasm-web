@@ -1,0 +1,147 @@
+---
+
+---
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <span class="greeting">Hello, I'm</span>
+        <h1>Alexander <span class="highlight">Vance</span></h1>
+        <h2>Senior Software Architect</h2>
+        <p class="intro">
+            Bridging the gap between complex systems and intuitive design. I
+            build scalable solutions with precision and elegance.
+        </p>
+        <div class="cta-group">
+            <a href="#projects" class="btn btn-primary">View Work</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+    </div>
+    <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        position: relative;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero-content {
+        flex: 1;
+        max-width: 600px;
+        z-index: 2;
+    }
+
+    .greeting {
+        display: block;
+        color: var(--color-accent);
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-sm);
+        letter-spacing: 0.05em;
+    }
+
+    h1 {
+        font-size: clamp(3rem, 5vw, 5rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .highlight {
+        color: var(--color-text-muted);
+        font-weight: 400;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        color: var(--color-text-muted);
+        font-weight: 400;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .intro {
+        font-size: 1.125rem;
+        color: var(--color-text-muted);
+        margin-bottom: var(--spacing-lg);
+        max-width: 480px;
+    }
+
+    .cta-group {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: var(--color-accent);
+        color: var(--color-bg-deep);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--color-accent-hover);
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        border: 1px solid var(--color-text-muted);
+        color: var(--color-text-main);
+    }
+
+    .btn-secondary:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+
+    /* Decorative Shapes */
+    .hero-shapes {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 400px;
+        height: 400px;
+        z-index: 1;
+    }
+
+    .shape {
+        position: absolute;
+        border: 2px solid var(--color-accent);
+        opacity: 0.2;
+    }
+
+    .shape-1 {
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        transform: rotate(45deg);
+    }
+
+    .shape-2 {
+        bottom: 0;
+        right: 50px;
+        width: 200px;
+        height: 200px;
+        border-color: var(--color-text-muted);
+        transform: rotate(15deg);
+    }
+
+    @media (max-width: 768px) {
+        .hero-shapes {
+            display: none; /* Simplify for mobile */
+        }
+    }
+</style>

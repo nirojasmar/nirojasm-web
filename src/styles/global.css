@@ -1,0 +1,77 @@
+:root {
+  /* Color Palette - Forest Green & Gold */
+  --color-bg-deep: #0B2015;
+  --color-bg-medium: #153525;
+  --color-bg-light: #2A5A43;
+  --color-accent: #D4AF37;
+  --color-accent-hover: #F4C430;
+  --color-text-main: #F1F8F4;
+  --color-text-muted: #A3C4B5;
+  --color-border: #2A5A43;
+
+  /* Typography */
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-main);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-text-main);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}

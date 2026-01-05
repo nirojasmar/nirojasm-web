@@ -1,16 +1,84 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Hobbies from "../components/Hobbies.astro";
+import Projects from "../components/Projects.astro";
+import FeaturedBlog from "../components/FeaturedBlog.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Alexander Vance | Software Architect">
+	<Hero />
+
+	<div class="content-wrapper">
+		<Hobbies />
+		<div class="spacer"></div>
+		<Projects />
+		<div class="spacer"></div>
+		<FeaturedBlog />
+	</div>
+
+	<footer class="site-footer">
+		<div class="footer-content">
+			<p>
+				&copy; {new Date().getFullYear()} Alexander Vance. Crafted with geometry
+				& code.
+			</p>
+			<div class="social-links">
+				<a href="#">GitHub</a>
+				<a href="#">LinkedIn</a>
+				<a href="#">Twitter</a>
+			</div>
+		</div>
+	</footer>
+</Layout>
+
+<style>
+	.content-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xl);
+	}
+
+	.spacer {
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-border),
+			transparent
+		);
+		width: 100%;
+		opacity: 0.5;
+	}
+
+	.site-footer {
+		margin-top: var(--spacing-xl);
+		padding: var(--spacing-lg) 0;
+		border-top: 1px solid var(--color-border);
+		color: var(--color-text-muted);
+		font-size: 0.9rem;
+	}
+
+	.footer-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.social-links {
+		display: flex;
+		gap: var(--spacing-md);
+	}
+
+	.social-links a:hover {
+		color: var(--color-accent);
+	}
+
+	@media (max-width: 600px) {
+		.footer-content {
+			flex-direction: column;
+			gap: var(--spacing-md);
+			text-align: center;
+		}
+	}
+</style>
