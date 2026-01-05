@@ -6,6 +6,7 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 
 - **Framework:** [Astro v5](https://astro.build/)
 - **Styling:** Vanilla CSS with a custom design system
+- **Content Management:** [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)
 - **Typography:** Outfit (Headings) & Inter (Body)
 - **Design:** Geometric forms, overlapping layers, and high-contrast accents
 
@@ -16,18 +17,20 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 ├── public/          # Static assets (favicons, etc.)
 ├── src/
 │   ├── components/  # Site components (Hero, Hobbies, Projects, etc.)
+│   ├── content/     # Markdown content for projects and blog posts
 │   ├── layouts/     # Page layouts
-│   ├── pages/       # Route pages (index.astro)
+│   ├── pages/       # Route pages (index.astro, projects/)
 │   └── styles/      # Global CSS and design tokens
 └── package.json     # Project dependencies and scripts
 ```
 
 ## ✨ Key Features
 
-- **Hero Section:** High-impact introduction with job title and primary branding.
+- **Hero Section:** High-impact introduction for **Nicolás Rojas Marín**, highlighting .NET & DevOps expertise.
+- **Content Collections:** Type-safe markdown content for projects and blog entries.
 - **Hobbies:** Icon-based cards showcasing personal interests.
-- **Projects:** Detailed project cards with "Process" insights and repository links.
-- **Blog:** Curated selection of featured blog posts.
+- **Dynamic Projects:** Detailed project cards with "Process" insights, dynamically generated from markdown.
+- **Blog Section:** Featured posts and list views for technical articles.
 - **Design System:** Comprehensive CSS variables for a consistent Forest Green & Gold theme.
 
 ## 🚀 Getting Started
@@ -48,4 +51,7 @@ The site follows a "Formal Architectural" aesthetic, utilizing:
 - **Overlapping Forms:** To create depth and visual interest.
 - **Varied Color Depths:** From deep green backgrounds to lighter forest accents.
 - **Gold Micro-animations:** Subtle hover effects to guide interaction.
-    
+
+## 📄 License
+
+This project is licensed under the MIT License - feel free to reproduce and use it for learning purposes.
