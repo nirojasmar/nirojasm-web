@@ -16,21 +16,21 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 /
 ├── public/          # Static assets (favicons, etc.)
 ├── src/
-│   ├── components/  # Site components (Hero, Hobbies, Projects, etc.)
-│   ├── content/     # Markdown content for projects and blog posts
+│   ├── components/  # Site components (Header, Hero, Hobbies, Projects, etc.)
+│   ├── content/     # Type-safe markdown for projects and blog posts
 │   ├── layouts/     # Page layouts
-│   ├── pages/       # Route pages (index.astro, projects/)
+│   ├── pages/       # Route pages (index, projects/, blog/)
 │   └── styles/      # Global CSS and design tokens
-└── package.json     # Project dependencies and scripts
+└── package.json
 ```
 
 ## ✨ Key Features
 
 - **Hero Section:** High-impact introduction for **Nicolás Rojas Marín**, highlighting .NET & DevOps expertise.
-- **Content Collections:** Type-safe markdown content for projects and blog entries.
+- **Type-Safe Content:** Powered by Astro v5 Content Collections with Zod schemas for projects and blog entries.
+- **Dynamic Routing:** Automatic route generation for individual project and blog pages.
+- **Pagination & Filtering:** Paginated list views for both projects and technical blog posts.
 - **Hobbies:** Icon-based cards showcasing personal interests.
-- **Dynamic Projects:** Detailed project cards with "Process" insights, dynamically generated from markdown.
-- **Blog Section:** Featured posts and list views for technical articles.
 - **Design System:** Comprehensive CSS variables for a consistent Forest Green & Gold theme.
 
 ## 🚀 Getting Started
