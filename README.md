@@ -1,8 +1,8 @@
-# Alexander Vance Portfolio
+# Nicolás Rojas Marín Portfolio
 
 A sophisticated personal portfolio website built with **Astro v5**. This project features a modern, geometric aesthetic with a monochromatic forest green palette and gold accents, designed for a professional Architectural & Technical tone.
 
-## �️ Tech Stack
+## 🚀 Tech Stack
 
 - **Framework:** [Astro v5](https://astro.build/)
 - **Styling:** Vanilla CSS with a custom design system
@@ -48,3 +48,4 @@ The site follows a "Formal Architectural" aesthetic, utilizing:
 - **Overlapping Forms:** To create depth and visual interest.
 - **Varied Color Depths:** From deep green backgrounds to lighter forest accents.
 - **Gold Micro-animations:** Subtle hover effects to guide interaction.
+    
