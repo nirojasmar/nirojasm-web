@@ -1,33 +1,38 @@
-# Astro Starter Kit: Minimal
+# Alexander Vance Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A sophisticated personal portfolio website built with **Astro v5**. This project features a modern, geometric aesthetic with a monochromatic forest green palette and gold accents, designed for a professional Architectural & Technical tone.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## �️ Tech Stack
 
-## 🚀 Project Structure
+- **Framework:** [Astro v5](https://astro.build/)
+- **Styling:** Vanilla CSS with a custom design system
+- **Typography:** Outfit (Headings) & Inter (Body)
+- **Design:** Geometric forms, overlapping layers, and high-contrast accents
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📂 Project Structure
 
 ```text
 /
-├── public/
+├── public/          # Static assets (favicons, etc.)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/  # Site components (Hero, Hobbies, Projects, etc.)
+│   ├── layouts/     # Page layouts
+│   ├── pages/       # Route pages (index.astro)
+│   └── styles/      # Global CSS and design tokens
+└── package.json     # Project dependencies and scripts
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## ✨ Key Features
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **Hero Section:** High-impact introduction with job title and primary branding.
+- **Hobbies:** Icon-based cards showcasing personal interests.
+- **Projects:** Detailed project cards with "Process" insights and repository links.
+- **Blog:** Curated selection of featured blog posts.
+- **Design System:** Comprehensive CSS variables for a consistent Forest Green & Gold theme.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🚀 Getting Started
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
@@ -36,8 +41,10 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 📐 Design Philosophy
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The site follows a "Formal Architectural" aesthetic, utilizing:
+- **Overlapping Forms:** To create depth and visual interest.
+- **Varied Color Depths:** From deep green backgrounds to lighter forest accents.
+- **Gold Micro-animations:** Subtle hover effects to guide interaction.
