@@ -1,26 +1,32 @@
 ---
-import { getCollection } from "astro:content";
+import { getPosts, getPost } from "../../lib/sanity";
 import Layout from "../../layouts/Layout.astro";
+import { marked } from "marked";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts = await getPosts();
     return posts.map((post) => ({
-        params: { slug: post.slug },
-        props: { post },
+        params: { slug: post.slug.current },
     }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { slug } = Astro.params;
+const post = await getPost(slug);
+
+if (!post) {
+    return Astro.redirect("/404");
+}
+
+const content = marked.parse(post.content);
 ---
 
-<Layout title={`${post.data.title} | Nicolás Rojas`}>
+<Layout title={`${post.title} | Nicolás Rojas`}>
     <article class="post-container">
         <header class="post-header">
             <div class="meta">
                 <time class="date"
                     >{
-                        post.data.pubDate.toLocaleDateString("en-US", {
+                        new Date(post.pubDate).toLocaleDateString("en-US", {
                             year: "numeric",
                             month: "long",
                             day: "numeric",
@@ -28,16 +34,14 @@ const { Content } = await post.render();
                     }</time
                 >
                 <div class="tags">
-                    {post.data.tags.map((tag) => <span>#{tag}</span>)}
+                    {post.tags && post.tags.map((tag) => <span>#{tag}</span>)}
                 </div>
             </div>
-            <h1>{post.data.title}</h1>
-            <p class="author">By {post.data.author}</p>
+            <h1>{post.title}</h1>
+            <p class="author">By {post.author}</p>
         </header>
 
-        <div class="post-content">
-            <Content />
-        </div>
+        <div class="post-content" set:html={content} />
 
         <footer class="post-footer">
             <a href="/blog" class="back-link">&larr; Back to Blog</a>
@@ -47,15 +51,16 @@ const { Content } = await post.render();
 
 <style>
     .post-container {
-        max-width: 720px;
-        margin: var(--spacing-xl) auto;
+        max-width: 900px; /* Increased from 720px */
+        margin: var(--spacing-xl) auto; /* Increased top margin to prevent header collision, kept reduced bottom */
+        margin-bottom: var(--spacing-lg);
     }
 
     .post-header {
-        margin-bottom: var(--spacing-xl);
+        margin-bottom: var(--spacing-lg); /* Reduced margin */
         text-align: center;
         border-bottom: 1px solid var(--color-border);
-        padding-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-md); /* Reduced padding */
     }
 
     .meta {

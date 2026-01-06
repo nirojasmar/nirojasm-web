@@ -1,11 +1,11 @@
 ---
-import { getCollection } from "astro:content";
+import { getPosts, urlFor } from "../../lib/sanity";
 import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths({ paginate }) {
-    const posts = (await getCollection("blog")).sort(
-        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-    );
+    const posts = await getPosts();
+    // Sanity returns date strings, we might need to parse them if sorting was strictly dependent on Date objects,
+    // but we requested sorted data from Sanity directly.
     return paginate(posts, { pageSize: 10 });
 }
 
@@ -26,23 +26,41 @@ const { page } = Astro.props;
                 page.data.map((post) => (
                     <article class="blog-card">
                         <div class="date">
-                            {post.data.pubDate.toLocaleDateString("en-US", {
-                                year: "numeric",
-                                month: "short",
-                                day: "numeric",
-                            })}
+                            {new Date(post.pubDate).toLocaleDateString(
+                                "en-US",
+                                {
+                                    year: "numeric",
+                                    month: "short",
+                                    day: "numeric",
+                                },
+                            )}
                         </div>
+                        {post.mainImage && (
+                            <div class="post-image">
+                                <img
+                                    src={urlFor(post.mainImage)
+                                        .width(800)
+                                        .height(400)
+                                        .url()}
+                                    alt={post.title}
+                                />
+                            </div>
+                        )}
                         <h2>
-                            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                            <a href={`/blog/${post.slug.current}`}>
+                                {post.title}
+                            </a>
                         </h2>
-                        <p>{post.data.description}</p>
+                        <p>{post.description}</p>
                         <div class="card-footer">
                             <div class="tags">
-                                {post.data.tags.map((tag) => (
-                                    <span>#{tag}</span>
-                                ))}
+                                {post.tags &&
+                                    post.tags.map((tag) => <span>#{tag}</span>)}
                             </div>
-                            <a href={`/blog/${post.slug}`} class="read-more">
+                            <a
+                                href={`/blog/${post.slug.current}`}
+                                class="read-more"
+                            >
                                 Read Article &rarr;
                             </a>
                         </div>
@@ -129,12 +147,31 @@ const { page } = Astro.props;
 
     .blog-card h2 {
         font-size: 1.5rem;
-        margin-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-xs);
     }
 
     .blog-card p {
         color: var(--color-text-muted);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .post-image {
         margin-bottom: var(--spacing-md);
+        border-radius: 4px;
+        overflow: hidden;
+        /* Center content if reduced width */
+        display: flex;
+        justify-content: center;
+    }
+
+    .post-image img {
+        width: 100%; /* If using width on container, or 90% here */
+        max-width: 90%; /* Reduce max width to 90% of container */
+        height: auto;
+        display: block;
+        object-fit: cover;
+        margin: 0 auto; /* Center the image */
+        border-radius: 4px; /* Ensure rounded corners on the image itself */
     }
 
     .card-footer {

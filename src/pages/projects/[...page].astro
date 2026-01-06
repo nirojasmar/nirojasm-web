@@ -1,11 +1,10 @@
 ---
-import { getCollection } from "astro:content";
+import { getProjects, urlFor } from "../../lib/sanity";
 import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths({ paginate }) {
-    const projects = (await getCollection("projects")).sort(
-        (a, b) => a.data.order - b.data.order,
-    );
+    const projects = await getProjects();
+    // Assuming Sanity query returns ordered projects
     return paginate(projects, { pageSize: 5 });
 }
 
@@ -27,9 +26,9 @@ const { page } = Astro.props;
                     >
                         <div class="project-content">
                             <div class="project-header">
-                                <h3>{project.data.title}</h3>
+                                <h3>{project.title}</h3>
                                 <a
-                                    href={project.data.repoLink}
+                                    href={project.repoLink}
                                     class="repo-link"
                                     aria-label="View Source"
                                     target="_blank"
@@ -53,23 +52,34 @@ const { page } = Astro.props;
 
                             <div class="process">
                                 <h4>The Challenge</h4>
-                                <p>{project.data.challenge}</p>
+                                <p>{project.challenge}</p>
 
                                 <h4>The Process</h4>
-                                <p>{project.data.process}</p>
+                                <p>{project.process}</p>
                             </div>
 
                             <ul class="tech-stack">
-                                {project.data.techStack.map((tech) => (
-                                    <li>{tech}</li>
-                                ))}
+                                {project.techStack &&
+                                    project.techStack.map((tech) => (
+                                        <li>{tech}</li>
+                                    ))}
                             </ul>
                         </div>
 
                         <div class="project-visual">
-                            <div class="placeholder-image">
-                                <span>{project.data.title} UI</span>
-                            </div>
+                            {project.mainImage ? (
+                                <img
+                                    src={urlFor(project.mainImage)
+                                        .width(800)
+                                        .url()}
+                                    alt={project.title}
+                                    style="width: 100%; height: 100%; object-fit: cover;"
+                                />
+                            ) : (
+                                <div class="placeholder-image">
+                                    <span>{project.title} UI</span>
+                                </div>
+                            )}
                         </div>
                     </article>
                 ))

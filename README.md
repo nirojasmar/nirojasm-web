@@ -6,7 +6,8 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 
 - **Framework:** [Astro v5](https://astro.build/)
 - **Styling:** Vanilla CSS with a custom design system
-- **Content Management:** [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/)
+- **Content Management:** [Sanity CMS](https://www.sanity.io/) (Headless CMS)
+- **Frontend Logic:** React (for CMS integrations)
 - **Typography:** Outfit (Headings) & Inter (Body)
 - **Design:** Geometric forms, overlapping layers, and high-contrast accents
 
@@ -14,10 +15,11 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 
 ```text
 /
-├── public/          # Static assets (favicons, etc.)
+├── public/          # Static assets
 ├── src/
-│   ├── components/  # Site components (Header, Hero, Hobbies, Projects, etc.)
-│   ├── content/     # Type-safe markdown for projects and blog posts
+│   ├── components/  # Site components (Header, Hero, Hobbies, etc.)
+│   ├── content/     # (Optional) Local content collections
+│   ├── lib/         # Utility libraries (Sanity client, etc.)
 │   ├── layouts/     # Page layouts
 │   ├── pages/       # Route pages (index, projects/, blog/)
 │   └── styles/      # Global CSS and design tokens
@@ -26,11 +28,11 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 
 ## ✨ Key Features
 
+- **Headless CMS integration:** Content for projects and blog posts is managed via **Sanity CMS**, providing a robust editing interface.
 - **Hero Section:** High-impact introduction for **Nicolás Rojas Marín**, highlighting .NET & DevOps expertise.
-- **Type-Safe Content:** Powered by Astro v5 Content Collections with Zod schemas for projects and blog entries.
+- **Dynamic Content:** Real-time content fetching from Sanity with optimized image delivery via `@sanity/image-url`.
 - **Dynamic Routing:** Automatic route generation for individual project and blog pages.
 - **Pagination & Filtering:** Paginated list views for both projects and technical blog posts.
-- **Hobbies:** Icon-based cards showcasing personal interests.
 - **Design System:** Comprehensive CSS variables for a consistent Forest Green & Gold theme.
 
 ## 🚀 Getting Started

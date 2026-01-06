@@ -24,4 +24,4 @@ pnpm-debug.log*
 .idea/
 
 # workspace settings
-.code-workspace
+*.code-workspace
