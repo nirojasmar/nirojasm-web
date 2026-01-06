@@ -1,17 +1,23 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import react from '@astrojs/react';
-
-// https://astro.build/config
 import sanity from "@sanity/astro";
+import { loadEnv } from "vite";
+
+import dotenv from 'dotenv';
+
+const { 
+  PUBLIC_SANITY_PROJECT_ID, 
+  PUBLIC_SANITY_DATASET 
+} = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+
 export default defineConfig({
   integrations: [
     react(),
     sanity({
-      projectId: "yphry1b1",
-      dataset: "production",
-      useCdn: false, // set to true for production
+      projectId: PUBLIC_SANITY_PROJECT_ID,
+      dataset: PUBLIC_SANITY_DATASET,
+      useCdn: true,
     }),
 
   ],
