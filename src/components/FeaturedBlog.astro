@@ -1,5 +1,8 @@
 ---
+import { getPosts } from "../lib/sanity";
 
+const allPosts = await getPosts();
+const posts = allPosts.filter((post) => post.featured).slice(0, 3);
 ---
 
 <section id="blog" class="featured-blog">
@@ -10,48 +13,27 @@
     </div>
 
     <div class="blog-grid">
-        <!-- Blog Post 1 -->
-        <article class="blog-card">
-            <div class="date">Dec 28, 2025</div>
-            <h3><a href="#">The Geometry of CSS Grid</a></h3>
-            <p>
-                Exploring how mathematical constraints can lead to more creative
-                web layouts. Why limitations are better than infinite freedom.
-            </p>
-            <div class="tags">
-                <span>#CSS</span>
-                <span>#Design</span>
-            </div>
-        </article>
-
-        <!-- Blog Post 2 -->
-        <article class="blog-card">
-            <div class="date">Nov 15, 2025</div>
-            <h3><a href="#">State Management vs. State Machines</a></h3>
-            <p>
-                Why thinking in finite states eliminates 90% of your frontend
-                bugs. A practical guide to XState with React.
-            </p>
-            <div class="tags">
-                <span>#React</span>
-                <span>#Architecture</span>
-            </div>
-        </article>
-
-        <!-- Blog Post 3 -->
-        <article class="blog-card">
-            <div class="date">Oct 02, 2025</div>
-            <h3><a href="#">Performance Patterns in Astro</a></h3>
-            <p>
-                How the islands architecture changes the way we think about
-                shipping JavaScript. My experience migrating a large Next.js
-                app.
-            </p>
-            <div class="tags">
-                <span>#Astro</span>
-                <span>#Performance</span>
-            </div>
-        </article>
+        {
+            posts.map((post) => (
+                <article class="blog-card">
+                    <div class="date">
+                        {new Date(post.pubDate).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                        })}
+                    </div>
+                    <h3>
+                        <a href={`/blog/${post.slug.current}`}>{post.title}</a>
+                    </h3>
+                    <p>{post.description}</p>
+                    <div class="tags">
+                        {post.tags &&
+                            post.tags.map((tag) => <span>#{tag}</span>)}
+                    </div>
+                </article>
+            ))
+        }
     </div>
 </section>
 
