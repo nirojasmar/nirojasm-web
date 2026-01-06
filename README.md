@@ -1,4 +1,4 @@
-# Nicolás Rojas Marín Portfolio
+# Nicolás Rojas Portfolio
 
 A sophisticated personal portfolio website built with **Astro v5**. This project features a modern, geometric aesthetic with a monochromatic forest green palette and gold accents, designed for a professional Architectural & Technical tone.
 
