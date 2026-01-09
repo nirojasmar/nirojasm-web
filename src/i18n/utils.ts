@@ -11,3 +11,13 @@ export function useTranslations(lang: keyof typeof ui) {
         return ui[lang][key] || ui[defaultLang][key];
     }
 }
+
+export function getRouteFromUrl(url: URL): string {
+    const pathname = url.pathname;
+    const parts = pathname.split('/');
+    if (parts[1] && parts[1] in ui) {
+        const path = parts.slice(2).join('/');
+        return path ? `/${path}` : '/';
+    }
+    return pathname;
+}
