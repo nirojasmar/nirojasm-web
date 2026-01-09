@@ -1,10 +1,13 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="hobbies" class="hobbies">
     <div class="section-header">
-        <h2>Interests & Hobbies</h2>
+        <h2>{t("hobbies.title")}</h2>
         <div class="header-line"></div>
     </div>
 
