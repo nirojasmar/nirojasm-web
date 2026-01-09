@@ -5,10 +5,10 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 ## 🚀 Tech Stack
 
 - **Framework:** [Astro v5](https://astro.build/)
+- **i18n:** Built-in Internationalization (EN/ES supported)
+- **Content Management:** [Sanity CMS](https://www.sanity.io/)
+- **Frontend Logic:** React
 - **Styling:** Vanilla CSS with a custom design system
-- **Content Management:** [Sanity CMS](https://www.sanity.io/) (Headless CMS)
-- **Frontend Logic:** React (for CMS integrations)
-- **Typography:** Outfit (Headings) & Inter (Body)
 - **Design:** Geometric forms, overlapping layers, and high-contrast accents
 
 ## 📂 Project Structure
@@ -17,22 +17,25 @@ A sophisticated personal portfolio website built with **Astro v5**. This project
 /
 ├── public/          # Static assets
 ├── src/
-│   ├── components/  # Site components (Header, Hero, Hobbies, etc.)
-│   ├── content/     # (Optional) Local content collections
-│   ├── lib/         # Utility libraries (Sanity client, etc.)
-│   ├── layouts/     # Page layouts
-│   ├── pages/       # Route pages (index, projects/, blog/)
+│   ├── components/  
+│   │   ├── pages/   # Complex page components
+│   │   └── *.astro  # UI components (Hero, Header, etc.)
+│   ├── lib/         # Sanity client & utilities
+│   ├── pages/       
+│   │   ├── [lang]/  # Internationalized routes
+│   │   └── 404.astro# Custom error page
+│   ├── layouts/     # Base layouts
 │   └── styles/      # Global CSS and design tokens
 └── package.json
 ```
 
 ## ✨ Key Features
 
-- **Headless CMS integration:** Content for projects and blog posts is managed via **Sanity CMS**, providing a robust editing interface.
-- **Hero Section:** High-impact introduction for **Nicolás Rojas Marín**, highlighting .NET & DevOps expertise.
-- **Dynamic Content:** Real-time content fetching from Sanity with optimized image delivery via `@sanity/image-url`.
-- **Dynamic Routing:** Automatic route generation for individual project and blog pages.
-- **Pagination & Filtering:** Paginated list views for both projects and technical blog posts.
+- **Multi-language Support (i18n):** Full localization support for English and Spanish, with dynamic routing.
+- **Headless CMS integration:** Content management via **Sanity CMS** with real-time fetching.
+- **Component-Based Architecture:** Page logic abstracted into specialized components for better maintainability.
+- **Custom 404 Page:** Unique error handling matching the site's architectural aesthetic.
+- **Dynamic Content:** Optimized image delivery and dynamic project/blog routing.
 - **Design System:** Comprehensive CSS variables for a consistent Forest Green & Gold theme.
 
 ## 🚀 Getting Started
