@@ -1,5 +1,5 @@
 import { sanityClient } from "sanity:client";
-import {createImageUrlBuilder} from '@sanity/image-url';
+import { createImageUrlBuilder } from '@sanity/image-url';
 
 export const builder = createImageUrlBuilder(sanityClient);
 
@@ -51,8 +51,8 @@ export interface Project {
     };
 }
 
-export async function getPosts(): Promise<Post[]> {
-    const query = `*[_type == "post"] | order(pubDate desc) {
+export async function getPosts(language: string = 'en'): Promise<Post[]> {
+    const query = `*[_type == "post" && language == $language] | order(pubDate desc) {
         _id,
         _type,
         title,
@@ -66,11 +66,11 @@ export async function getPosts(): Promise<Post[]> {
         tags,
         featured
     }`;
-    return await sanityClient.fetch(query);
+    return await sanityClient.fetch(query, { language });
 }
 
-export async function getPost(slug: string): Promise<Post> {
-    const query = `*[_type == "post" && slug.current == $slug][0] {
+export async function getPost(slug: string, language: string = 'en'): Promise<Post> {
+    const query = `*[_type == "post" && slug.current == $slug && language == $language][0] {
         _id,
         _type,
         title,
@@ -84,10 +84,10 @@ export async function getPost(slug: string): Promise<Post> {
         tags,
         featured
     }`;
-    return await sanityClient.fetch(query, { slug });
+    return await sanityClient.fetch(query, { slug, language });
 }
 
-export async function getProjects(): Promise<Project[]> {
-    const query = `*[_type == "project"] | order(order asc)`;
-    return await sanityClient.fetch(query);
+export async function getProjects(language: string = 'en'): Promise<Project[]> {
+    const query = `*[_type == "project" && language == $language] | order(order asc)`;
+    return await sanityClient.fetch(query, { language });
 }

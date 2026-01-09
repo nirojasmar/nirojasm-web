@@ -1,19 +1,21 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="home" class="hero">
     <div class="hero-content">
-        <span class="greeting">Hello, I'm</span>
+        <span class="greeting">{t("hero.greeting")}</span>
         <h1>Nicolás <span class="highlight">Rojas</span></h1>
-        <h2>Backend Developer & DevOps Engineer</h2>
+        <h2>{t("hero.role")}</h2>
         <p class="intro">
-            I specialize in building the infrastructure and logic that modern businesses depend on. 
-            From modular APIs to automated AWS deployments, I bridge the gap between clean code and production-grade reliability.
+            {t("hero.intro")}
         </p>
         <div class="cta-group">
-            <a href="#projects" class="btn btn-primary">View Work</a>
-            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            <a href="#projects" class="btn btn-primary">{t("hero.viewWork")}</a>
+            <a href="#contact" class="btn btn-secondary">{t("hero.contact")}</a>
         </div>
     </div>
     <div class="hero-shapes">

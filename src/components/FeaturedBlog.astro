@@ -1,15 +1,21 @@
 ---
 import { getPosts } from "../lib/sanity";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
-const allPosts = await getPosts();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allPosts = await getPosts(lang);
 const posts = allPosts.filter((post) => post.featured).slice(0, 3);
 ---
 
 <section id="blog" class="featured-blog">
     <div class="section-header">
-        <h2>Recent Thoughts</h2>
+        <h2>{t("blog.title")}</h2>
         <div class="header-line"></div>
-        <a href="/blog" class="view-all">View All</a>
+        <a href={`/${lang === "en" ? "" : lang}/blog`} class="view-all"
+            >{t("blog.viewAll")}</a
+        >
     </div>
 
     <div class="blog-grid">

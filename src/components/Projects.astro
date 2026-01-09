@@ -1,7 +1,11 @@
 ---
 import { getProjects, urlFor } from "../lib/sanity";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
-const allProjects = await getProjects();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allProjects = await getProjects(lang);
 const projects = allProjects
     .filter((project) => project.homepage)
     .sort((a, b) => a.order - b.order)
@@ -10,7 +14,7 @@ const projects = allProjects
 
 <section id="projects" class="projects">
     <div class="section-header">
-        <h2>Featured Projects</h2>
+        <h2>{t("projects.title")}</h2>
         <div class="header-line"></div>
     </div>
 
@@ -26,7 +30,7 @@ const projects = allProjects
                             <a
                                 href={project.repoLink}
                                 class="repo-link"
-                                aria-label="View Source"
+                                aria-label={t("projects.viewSource")}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -47,10 +51,10 @@ const projects = allProjects
                         </div>
 
                         <div class="process">
-                            <h4>What is this?</h4>
+                            <h4>{t("projects.challenge")}</h4>
                             <p>{project.challenge}</p>
 
-                            <h4>How to do it?</h4>
+                            <h4>{t("projects.process")}</h4>
                             <p>{project.process}</p>
                         </div>
 
