@@ -1,5 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="site-header">
@@ -9,9 +12,24 @@
         </a>
         <nav class="main-nav">
             <ul>
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/projects" class="nav-link">Projects</a></li>
-                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li>
+                    <a
+                        href={`${lang === "en" ? "/" : "/" + lang}`}
+                        class="nav-link">{t("nav.home")}</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href={`${lang === "en" ? "" : "/" + lang}/projects`}
+                        class="nav-link">{t("nav.projects")}</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href={`${lang === "en" ? "" : "/" + lang}/blog`}
+                        class="nav-link">{t("nav.blog")}</a
+                    >
+                </li>
             </ul>
         </nav>
     </div>

@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../Hero.astro";
+import Hobbies from "../Hobbies.astro";
+import Projects from "../Projects.astro";
+import FeaturedBlog from "../FeaturedBlog.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Nicolás Rojas | .NET Developer">
+    <main>
+        <Hero />
+        <div class="spacer"></div>
+        <Hobbies />
+        <div class="spacer"></div>
+        <Projects />
+        <div class="spacer"></div>
+        <FeaturedBlog />
+    </main>
+</Layout>
+
+<style>
+    main {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        color: white;
+        line-height: 1.6;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .spacer {
+        height: 100px;
+    }
+</style>

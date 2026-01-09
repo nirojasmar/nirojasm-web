@@ -6,9 +6,9 @@ import { loadEnv } from "vite";
 
 import dotenv from 'dotenv';
 
-const { 
-  PUBLIC_SANITY_PROJECT_ID, 
-  PUBLIC_SANITY_DATASET 
+const {
+  PUBLIC_SANITY_PROJECT_ID,
+  PUBLIC_SANITY_DATASET
 } = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
 
 export default defineConfig({
@@ -19,6 +19,12 @@ export default defineConfig({
       dataset: PUBLIC_SANITY_DATASET,
       useCdn: true,
     }),
-
   ],
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
 });
