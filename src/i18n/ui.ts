@@ -26,6 +26,10 @@ export const ui = {
         '404.title': 'Page Not Found',
         '404.desc': "The coordinate system seems to be broken here. This page doesn't exist in our current geometry.",
         '404.back': 'Return Home',
+        'contact.title': 'Get in Touch',
+        'contact.subtitle': 'Have a project in mind or just want to say hi? I\'d love to hear from you!',
+        'contact.email': 'Send me an email',
+        'contact.github': 'View GitHub Profile'
     },
     es: {
         'nav.home': 'Inicio',
@@ -47,6 +51,10 @@ export const ui = {
         '404.title': 'Página No Encontrada',
         '404.desc': 'El sistema de coordenadas parece estar roto. Esta página no existe en nuestra geometría actual.',
         '404.back': 'Volver al Inicio',
+        'contact.title': 'Contáctame',
+        'contact.subtitle': '¿Tienes un proyecto en mente o simplemente quieres saludar? ¡Me encantaría escucharte!',
+        'contact.email': 'Envíame un correo',
+        'contact.github': 'Ver perfil de GitHub'
     },
 } as const;
 
