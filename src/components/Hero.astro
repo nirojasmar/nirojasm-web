@@ -15,7 +15,10 @@ const t = useTranslations(lang);
         </p>
         <div class="cta-group">
             <a href="#projects" class="btn btn-primary">{t("hero.viewWork")}</a>
-            <a href="#contact" class="btn btn-secondary">{t("hero.contact")}</a>
+            <a
+                href={`${lang === "en" ? "" : "/" + lang}/contact`}
+                class="btn btn-secondary">{t("hero.contact")}</a
+            >
         </div>
     </div>
     <div class="hero-shapes">
